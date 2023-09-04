@@ -6,7 +6,7 @@ import logging
 logging.basicConfig(stream=sys.stdout,encoding='utf-8', format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
 
 url= "https://www.youtube.com/watch?v=HytWgel76rY&list=PLEwK9wdS5g0oZwFwoQT-BrjmkazJWXxfe"
-dir= "/Volumes/SSD/video/youtube"
+dir= "c:\\data\\video\\youtube"
 
 
 class Task:
@@ -25,7 +25,8 @@ def download_playlist(link) -> str:
     playlist = Playlist(link)
     logging.info(f"download playlist {playlist.title}")
 
-    new_dir = dir+"/"+playlist.title
+
+    new_dir = os.path.join(dir,playlist.title)
     if not os.path.exists(new_dir):
         os.mkdir(new_dir)
 
